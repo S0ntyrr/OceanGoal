@@ -20,6 +20,7 @@
             box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
             margin-bottom: 20px;
             width: 300px;
+            display: none; /* Ocultar por defecto */
         }
         input {
             width: 100%;
@@ -58,16 +59,16 @@
     </style>
 </head>
 <body>
-    <div class="login-container">
-        <h2>Iniciar sesión</h2>
+    <div class="login-container" id="loginContainer">
+        <h2>Crear Usuario</h2>
         <form id="loginForm">
-            <input type="text" name="username" placeholder="Usuario" required>
-            <input type="password" name="password" placeholder="Contraseña" required>
-            <button type="submit">Ingresar</button>
+            <input type="text" id="registerUsername" placeholder="Crear Usuario" required>
+            <input type="password" id="registerPassword" placeholder="Crear Contraseña" required>
+            <button type="submit">Registrar</button>
         </form>
     </div>
 
-    <div class="crud-container">
+    <div class="crud-container" id="crudContainer">
         <h2>CRUD de Usuarios</h2>
         <form id="crudForm">
             <input type="text" id="crudUsername" placeholder="Usuario" required>

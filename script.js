@@ -1,4 +1,22 @@
 const users = []; // Array para almacenar los usuarios
+let registeredUser = null; // Usuario registrado
+
+// Mostrar solo el formulario de login al inicio
+document.getElementById('loginContainer').style.display = 'block';
+
+// Manejar el formulario de registro/login
+document.getElementById('loginForm').addEventListener('submit', function(event) {
+    event.preventDefault();
+    const username = document.getElementById('registerUsername').value;
+    const password = document.getElementById('registerPassword').value;
+
+    // Guardar el usuario registrado
+    registeredUser = { username, password };
+
+    // Ocultar el formulario de login y mostrar el CRUD
+    document.getElementById('loginContainer').style.display = 'none';
+    document.getElementById('crudContainer').style.display = 'block';
+});
 
 // Manejar el formulario de CRUD
 document.getElementById('crudForm').addEventListener('submit', function(event) {
