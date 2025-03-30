@@ -64,7 +64,8 @@ function deleteUser(index) {
 
 // Mostrar el formulario de "Crear Cuenta"
 document.getElementById('createAccountButton').addEventListener('click', function() {
-    window.location.href = 'register.html'; // Cambia 'register.html' por la URL de tu página de registro
+    document.getElementById('loginContainer').style.display = 'none';
+    document.getElementById('createAccountContainer').style.display = 'block';
 });
 
 // Manejar el formulario de "Crear Cuenta"
