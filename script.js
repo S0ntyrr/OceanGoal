@@ -61,3 +61,32 @@ function deleteUser(index) {
     users.splice(index, 1);
     renderTable();
 }
+
+// Mostrar el formulario de "Crear Cuenta"
+document.getElementById('createAccountButton').addEventListener('click', function() {
+    window.location.href = 'register.html'; // Cambia 'register.html' por la URL de tu página de registro
+});
+
+// Manejar el formulario de "Crear Cuenta"
+document.getElementById('createAccountForm').addEventListener('submit', function(event) {
+    event.preventDefault();
+    const newUsername = document.getElementById('newUsername').value;
+    const newPassword = document.getElementById('newPassword').value;
+
+    // Guardar el nuevo usuario en localStorage
+    const users = JSON.parse(localStorage.getItem('users')) || [];
+    users.push({ username: newUsername, password: newPassword });
+    localStorage.setItem('users', JSON.stringify(users));
+
+    alert(`Cuenta creada para el usuario: ${newUsername}`);
+
+    // Volver al formulario de login
+    document.getElementById('createAccountContainer').style.display = 'none';
+    document.getElementById('loginContainer').style.display = 'block';
+});
+
+// Volver al formulario de login desde "Crear Cuenta"
+document.getElementById('backToLoginButton').addEventListener('click', function() {
+    document.getElementById('createAccountContainer').style.display = 'none';
+    document.getElementById('loginContainer').style.display = 'block';
+});
