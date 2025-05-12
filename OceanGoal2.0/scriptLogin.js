@@ -4,18 +4,32 @@ let registeredUser = null; // Usuario registrado
 // Mostrar solo el formulario de login al inicio
 document.getElementById('loginContainer').style.display = 'block';
 
-// Manejar el formulario de registro/login
-document.getElementById('loginForm').addEventListener('submit', function(event) {
-    event.preventDefault();
+// Manejar el formulario de login
+document.getElementById('loginForm').addEventListener('submit', async function(event) {
+    event.preventDefault(); // Evitar el envío predeterminado del formulario
     const username = document.getElementById('registerUsername').value;
     const password = document.getElementById('registerPassword').value;
 
-    // Guardar el usuario registrado
-    registeredUser = { username, password };
+    try {
+        const response = await fetch('Login.php', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded',
+            },
+            body: new URLSearchParams({ username, password }),
+        });
 
-    // Ocultar el formulario de login y mostrar el CRUD
-    document.getElementById('loginContainer').style.display = 'none';
-    document.getElementById('crudContainer').style.display = 'block';
+        const result = await response.json();
+
+        if (response.ok && result.status === 'success') {
+            window.location.href = result.redirect; // Redirigir al home si las credenciales son correctas
+        } else {
+            alert(result.message); // Mostrar mensaje de error del servidor
+        }
+    } catch (error) {
+        console.error('Error al iniciar sesión:', error);
+        alert('Error al iniciar sesión. Inténtalo de nuevo.');
+    }
 });
 
 // Manejar el formulario de CRUD
@@ -69,21 +83,31 @@ document.getElementById('createAccountButton').addEventListener('click', functio
 });
 
 // Manejar el formulario de "Crear Cuenta"
-document.getElementById('createAccountForm').addEventListener('submit', function(event) {
+document.getElementById('createAccountForm').addEventListener('submit', async function(event) {
     event.preventDefault();
     const newUsername = document.getElementById('newUsername').value;
     const newPassword = document.getElementById('newPassword').value;
 
-    // Guardar el nuevo usuario en localStorage
-    const users = JSON.parse(localStorage.getItem('users')) || [];
-    users.push({ username: newUsername, password: newPassword });
-    localStorage.setItem('users', JSON.stringify(users));
+    try {
+        const response = await fetch('Registro.php', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded',
+            },
+            body: new URLSearchParams({ username: newUsername, password: newPassword }),
+        });
 
-    alert(`Cuenta creada para el usuario: ${newUsername}`);
+        const result = await response.text();
+        alert(result);
 
-    // Volver al formulario de login
-    document.getElementById('createAccountContainer').style.display = 'none';
-    document.getElementById('loginContainer').style.display = 'block';
+        if (response.ok) {
+            document.getElementById('createAccountContainer').style.display = 'none';
+            document.getElementById('loginContainer').style.display = 'block';
+        }
+    } catch (error) {
+        console.error('Error al registrar cuenta:', error);
+        alert('Error al registrar cuenta. Inténtalo de nuevo.');
+    }
 });
 
 // Volver al formulario de login desde "Crear Cuenta"

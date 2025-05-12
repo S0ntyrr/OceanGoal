@@ -2,7 +2,7 @@
     $servidor = "localhost";
     $Usuario = "root";
     $clave = "";
-    $basededatos = "oceangoal";
+    $basededatos = "ocean_goal"; // Corregido para coincidir con el archivo SQL
 
     $Enlace = new mysqli($servidor,$Usuario,$clave,$basededatos);
 

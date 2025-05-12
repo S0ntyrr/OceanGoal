@@ -69,21 +69,31 @@ document.getElementById('createAccountButton').addEventListener('click', functio
 });
 
 // Manejar el formulario de "Crear Cuenta"
-document.getElementById('createAccountForm').addEventListener('submit', function(event) {
+document.getElementById('createAccountForm').addEventListener('submit', async function(event) {
     event.preventDefault();
     const newUsername = document.getElementById('newUsername').value;
     const newPassword = document.getElementById('newPassword').value;
 
-    // Guardar el nuevo usuario en localStorage
-    const users = JSON.parse(localStorage.getItem('users')) || [];
-    users.push({ username: newUsername, password: newPassword });
-    localStorage.setItem('users', JSON.stringify(users));
+    try {
+        const response = await fetch('Registro.php', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded',
+            },
+            body: new URLSearchParams({ username: newUsername, password: newPassword }),
+        });
 
-    alert(`Cuenta creada para el usuario: ${newUsername}`);
+        const result = await response.text();
+        alert(result);
 
-    // Volver al formulario de login
-    document.getElementById('createAccountContainer').style.display = 'none';
-    document.getElementById('loginContainer').style.display = 'block';
+        if (response.ok) {
+            document.getElementById('createAccountContainer').style.display = 'none';
+            document.getElementById('loginContainer').style.display = 'block';
+        }
+    } catch (error) {
+        console.error('Error al registrar cuenta:', error);
+        alert('Error al registrar cuenta. Inténtalo de nuevo.');
+    }
 });
 
 // Volver al formulario de login desde "Crear Cuenta"

@@ -10,23 +10,23 @@
 <body>
     <div class="login-container" id="loginContainer">
         <h2>Ingrese sus credenciales</h2>
-        <form id="loginForm" >
+        <form id="loginForm" action="Login.php" method="POST">
             <label for="registerUsername">Usuario</label>
-            <input type="text" id="registerUsername" placeholder="Ingrese Usuario" required>
+            <input type="text" id="registerUsername" name="username" placeholder="Ingrese Usuario" required>
             <label for="registerPassword">Contraseña</label>
-            <input type="password" id="registerPassword" placeholder="Ingrese Contraseña" required>
-            <button type="submit">Registrar</button>
-            <button type="button" id="createAccountButton">Crear Cuenta</button>
+            <input type="password" id="registerPassword" name="password" placeholder="Ingrese Contraseña" required>
+            <button type="submit">Iniciar Sesión</button>
         </form>
+        <button type="button" id="createAccountButton">Crear Cuenta</button>
     </div>
 
     <div class="create-account-container" id="createAccountContainer" style="display: none;">
         <h2>Registrar Nueva Cuenta</h2>
-        <form id="createAccountForm">
+        <form id="createAccountForm" action="Registro.php" method="POST">
             <label for="newUsername">Nuevo Usuario</label>
-            <input type="text" id="newUsername" placeholder="Nuevo Usuario" required>
+            <input type="text" id="newUsername" name="username" placeholder="Nuevo Usuario" required>
             <label for="newPassword">Nueva Contraseña</label>
-            <input type="password" id="newPassword" placeholder="Nueva Contraseña" required>
+            <input type="password" id="newPassword" name="password" placeholder="Nueva Contraseña" required>
             <button type="submit">Registrar Cuenta</button>
             <button type="button" id="backToLoginButton">Volver</button>
         </form>
