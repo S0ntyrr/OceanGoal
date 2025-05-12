@@ -105,7 +105,7 @@ document.getElementById('createAccountForm').addEventListener('submit', async fu
             document.getElementById('loginContainer').style.display = 'block';
         }
     } catch (error) {
-        console.error('Error al registrar cuenta:', error);
+        console.error('Error al registrar cuenta:', º);
         alert('Error al registrar cuenta. Inténtalo de nuevo.');
     }
 });

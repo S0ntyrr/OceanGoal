@@ -15,6 +15,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         if ($password_hash !== null) { // Verificar si el usuario existe
             if (password_verify($contrasena, $password_hash)) {
+                session_start();
+                $_SESSION['username'] = $usuario;
                 http_response_code(200); // Código de éxito
                 echo json_encode(["status" => "success", "redirect" => "home.html"]);
                 exit();
