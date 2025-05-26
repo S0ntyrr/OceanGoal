@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OceanGoal</title>
+    <!-- Enlace al archivo CSS externo -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav class="navbar">
+        <a href="home.html">Inicio</a>
+        <a href="Noticias.html">Noticias</a>
+        <a href="perfil.html">Perfil</a>
+        <a href="reportes.html">Reportes</a>
+    </nav>
+
+    <div class="login-container" id="loginContainer">
+        <h2>Ingrese sus credenciales</h2>
+        <form id="loginForm" >
+            <label for="registerUsername">Usuario</label>
+            <input type="text" id="registerUsername" placeholder="Ingrese Usuario" required>
+            <label for="registerPassword">Contraseña</label>
+            <input type="password" id="registerPassword" placeholder="Ingrese Contraseña" required>
+            <button type="submit">Registrar</button>
+            <button type="button" id="createAccountButton">Crear Cuenta</button>
+        </form>
+    </div>
+
+    <div class="create-account-container" id="createAccountContainer" style="display: none;">
+        <h2>Registrar Nueva Cuenta</h2>
+        <form id="createAccountForm" action="Registro.php" method="POST">
+            <label for="newUsername">Nuevo Usuario</label>
+            <input type="text" id="newUsername" name="newUsername" placeholder="Nuevo Usuario" required>
+            <label for="newPassword">Nueva Contraseña</label>
+            <input type="password" id="newPassword" name="newPassword" placeholder="Nueva Contraseña" required>
+            <button type="submit">Registrar Cuenta</button>
+            <button type="button" id="backToLoginButton">Volver</button>
+        </form>        
+    </div>
+
+    <div class="crud-container" id="crudContainer">
+        <h2>OceanGoal Admin</h2>
+        <form id="crudForm">
+            <label for="crudUsername">Usuario</label>
+            <input type="text" id="crudUsername" placeholder="Usuario" required>
+            <label for="crudPassword">Contraseña</label>
+            <input type="password" id="crudPassword" placeholder="Contraseña" required>
+            <button type="submit">Agregar</button>
+        </form>
+        <table>
+            <thead>
+                <tr>
+                    <th>Usuario</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody id="crudTableBody">
+                <!-- Filas dinámicas aquí -->
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Enlace al archivo JavaScript externo -->
+    <script src="scriptRegistro.js"></script>
+</body>
+</html>

@@ -1,0 +1,278 @@
+/* Estilos para la interfaz de reportes, similar a styleLogin.css */
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(to bottom, #e3f6fd 0%, #b3e0ff 60%, #00c6ff 100%);
+    color: #222;
+    line-height: 1.6;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.reporte-container {
+    background: rgba(255, 255, 255, 0.95);
+    padding: 24px 32px;
+    border-radius: 12px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    width: 340px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.foto-perfil {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background: #e0e0e0 url('logo.png') center/cover no-repeat;
+    margin-bottom: 18px;
+    border: 2px solid #0072ff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.datos-usuario {
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+.datos-usuario label {
+    color: #0072ff;
+    font-weight: bold;
+    margin-bottom: 2px;
+    display: block;
+}
+
+.datos-usuario .valor {
+    background: #f3f8ff;
+    border-radius: 5px;
+    padding: 8px 10px;
+    margin-bottom: 10px;
+    border: 1px solid #b3d1ff;
+    color: #333;
+    font-size: 15px;
+}
+
+.descripcion-box {
+    width: 100%;
+    min-height: 60px;
+    border: 1px solid #b3d1ff;
+    border-radius: 5px;
+    padding: 8px 10px;
+    font-size: 15px;
+    margin-bottom: 10px;
+    resize: vertical;
+    background: #f3f8ff;
+    color: #333;
+}
+
+.guardar-desc-btn {
+    background: #28a745;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 8px 20px;
+    font-size: 15px;
+    font-weight: bold;
+    cursor: pointer;
+    margin-bottom: 10px;
+    transition: background 0.2s, box-shadow 0.2s;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+.guardar-desc-btn:hover {
+    background: #218838;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.12);
+}
+
+.volver-button {
+    margin: 24px auto 0 auto;
+    display: block;
+    background: #0072ff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 32px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    transition: background 0.2s, box-shadow 0.2s;
+}
+.volver-button:hover {
+    background: #000000;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.12);
+}
+
+.logout-button {
+    margin: 16px auto 0 auto;
+    display: block;
+    background: #ff5252;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 32px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    transition: background 0.2s, box-shadow 0.2s;
+}
+.logout-button:hover {
+    background: #c62828;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.12);
+}
+
+.navbar {
+    width: 100vw;
+    background: #b3e0ff;
+    display: flex;
+    justify-content: center;
+    gap: 32px;
+    padding: 14px 0 10px 0;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    margin-bottom: 24px;
+    position: relative;
+    left: 50%;
+    right: 50%;
+    transform: translateX(-50%);
+    z-index: 10;
+}
+
+.navbar a {
+    color: #0072ff;
+    text-decoration: none;
+    font-size: 17px;
+    font-weight: bold;
+    padding: 6px 18px;
+    border-radius: 4px;
+    transition: background 0.2s, color 0.2s;
+    background: transparent;
+}
+
+.navbar a:hover, .navbar a.active {
+    background: #00c6ff;
+    color: #fff;
+}
+
+.contenido {
+  max-width: 500px;
+  width: 95vw;
+  margin: 0 auto;
+  background: rgba(255,255,255,0.97);
+  border-radius: 12px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+  padding: 24px 10px 24px 10px;
+  overflow-y: auto;
+}
+
+.form-reporte {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  background: #fafdff;
+  padding: 24px;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+  margin-top: 18px;
+  max-width: 100%;
+}
+
+.input-reporte {
+  padding: 10px;
+  border: 1px solid #b3d1ff;
+  border-radius: 5px;
+  font-size: 15px;
+  background: #f3f8ff;
+  color: #222;
+}
+
+.input-reporte[type="file"] {
+  background: #fafdff;
+  border: none;
+  color: #222;
+  font-size: 15px;
+  margin-bottom: 8px;
+}
+
+.textarea-reporte {
+  min-height: 80px;
+  padding: 10px;
+  border: 1px solid #b3d1ff;
+  border-radius: 5px;
+  font-size: 15px;
+  background: #f3f8ff;
+  color: #222;
+  resize: vertical;
+}
+
+.btn-enviar-reporte {
+  background: #0072ff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 24px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  margin-top: 10px;
+  transition: background 0.2s, box-shadow 0.2s;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+.btn-enviar-reporte:hover {
+  background: #005bb5;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.12);
+}
+
+.btn-mis-reportes {
+  background: #16a085;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 24px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  margin-top: 18px;
+  transition: background 0.2s, box-shadow 0.2s;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  display: block;
+}
+.btn-mis-reportes:hover {
+  background: #12806a;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.12);
+}
+
+.reporte-card {
+  background: #fafdff;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.07);
+  padding: 18px;
+  margin-bottom: 18px;
+  border-left: 4px solid #00c6ff;
+  color: #222;
+}
+
+.reporte-card img {
+  max-width: 180px;
+  max-height: 180px;
+  display: block;
+  margin: 10px 0 0 0;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+
+@media (max-width: 600px) {
+  .contenido {
+    max-width: 98vw;
+    padding: 10px 2vw;
+  }
+  .form-reporte {
+    padding: 0;
+  }
+}

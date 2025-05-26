@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mis Reportes</title>
+    <link rel="stylesheet" href="styleReportes.css">
+</head>
+<body>
+    <nav class="navbar">
+        <a href="home.html">Inicio</a>
+        <a href="Noticias.html">Noticias</a>
+        <a href="perfil.html">Perfil</a>
+        <a href="reportes.html">Reportes</a>
+    </nav>
+    <div class="contenido">
+        <h1>Mis Reportes</h1>
+        <div id="mis-reportes-lista">
+            <p>Cargando reportes...</p>
+        </div>
+    </div>
+    <script>
+    // Cargar reportes del usuario vía AJAX
+    fetch('obtener_reportes.php')
+        .then(res => res.json())
+        .then(data => {
+            const cont = document.getElementById('mis-reportes-lista');
+            if (!Array.isArray(data) || data.length === 0) {
+                cont.innerHTML = '<p>No tienes reportes registrados.</p>';
+                return;
+            }
+            cont.innerHTML = data.map(r => {
+                let imgHtml = '';
+                if (r.imagen_url && r.imagen_url !== 'null' && r.imagen_url !== '') {
+                    imgHtml = `<img src="${r.imagen_url.startsWith('uploads/') ? r.imagen_url : 'uploads/' + r.imagen_url}" alt="Imagen del reporte">`;
+                }
+                return `
+                    <div class="reporte-card">
+                        <strong>Tipo:</strong> ${r.tipo}<br>
+                        <strong>Fecha:</strong> ${r.fecha}<br>
+                        <strong>Descripción:</strong> ${r.descripcion}
+                        ${imgHtml}
+                    </div>
+                `;
+            }).join('');
+        })
+        .catch(() => {
+            document.getElementById('mis-reportes-lista').innerHTML = '<p>Error al cargar los reportes.</p>';
+        });
+    </script>
+</body>
+</html>

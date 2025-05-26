@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reportes</title>
+    <link rel="stylesheet" href="styleReportes.css">
+</head>
+<body>
+    <nav class="navbar">
+        <a href="home.html">Inicio</a>
+        <a href="Noticias.html">Noticias</a>
+        <a href="perfil.html">Perfil</a>
+        <a href="reportes.html">Reportes</a>
+    </nav>
+
+    <div class="contenido">
+        <h1>Reportes</h1>
+        <form class="form-reporte">
+            <label for="tipo-reporte">Tipo de reporte:</label>
+            <input type="text" id="tipo-reporte" name="tipo-reporte" class="input-reporte" placeholder="Ej: Contaminación, Avistamiento, etc." required>
+
+            <label for="fecha-reporte">Fecha (día, hora, mes, año):</label>
+            <input type="datetime-local" id="fecha-reporte" name="fecha-reporte" class="input-reporte" required>
+
+            <label for="descripcion-reporte">Descripción:</label>
+            <textarea id="descripcion-reporte" name="descripcion-reporte" class="textarea-reporte" placeholder="Describe el reporte..." required></textarea>
+
+            <label for="imagen-reporte">Imagen (máx. 2.5MB):</label>
+            <input type="file" id="imagen-reporte" name="imagen-reporte" class="input-reporte" accept="image/*" required>
+            <small style="color:#555; margin-bottom:10px;">Solo imágenes. Tamaño máximo: 2.5MB</small>
+            
+            <button type="submit" class="btn-enviar-reporte">Enviar Reporte</button>
+            
+            <button class="btn-mis-reportes" onclick="location.href='mis_reportes.html'">Mis Reportes</button>
+        </form>
+        
+    </div>
+
+    <script src="script.js"></script>
+    <script>
+    document.querySelector('.form-reporte').addEventListener('submit', function(e) {
+        e.preventDefault();
+        const formData = new FormData(this);
+        fetch('guardar_reporte.php', {
+            method: 'POST',
+            body: formData
+        })
+        .then(res => res.text())
+        .then(msg => alert(msg))
+        .catch(() => alert('Error al guardar el reporte.'));
+    });
+    </script>
+</body>
+</html>
